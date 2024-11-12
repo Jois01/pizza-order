@@ -2,16 +2,17 @@
 import navbar from './components/navbar.vue'
 import pizza from './components/pizza.vue'
 import cart from './components/cart.vue'
+import varian from './components/modalVariant.vue'
 </script>
 
 <template>
-  <navbar/>
-  <div class="container grid grid-cols-1 md:grid-cols-3">
+  <navbar />
+  <div class="grid grid-cols-1 md:grid-cols-3 m-4">
     <div class="card col-span-2">
-      <pizza/>
+      <pizza />
     </div>
     <div class="card">
-      <cart/>
+      <cart />
     </div>
   </div>
 </template>
