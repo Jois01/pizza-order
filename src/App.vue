@@ -13,7 +13,6 @@ import cart from './components/cart.vue'
       <cart />
     </div>
   </div>
-  <!-- <Variant v-if="open" /> -->
 </template>
 <script>
 export default {
@@ -21,7 +20,6 @@ export default {
     navbar,
     pizza,
     cart,
-    // Variant,
   },
 }
 </script>
