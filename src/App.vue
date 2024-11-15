@@ -1,25 +1,65 @@
-<script setup>
-import navbar from './components/navbar.vue'
-import pizza from './components/pizza.vue'
-import cart from './components/cart.vue'
-</script>
 <template>
   <navbar />
-  <div class="grid grid-cols-1 md:grid-cols-3 m-4" >
+  <div id="app" class="grid grid-cols-1 md:grid-cols-3 m-4">
     <div class="card col-span-2">
-      <pizza />
+      <div class="card bg-white m-6 p-2 rounded-md shadow-xl">
+        <div class="card-title m-4 text-xl">Pizza list</div>
+        <div class="card-body m-4 items-center">
+          <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-8 items-center">
+            <div
+              class="card bg-gray-50 rounded-lg"
+              v-for="pizza in pizzas"
+              :key="pizza.id"
+            >
+              <pizza :pizza="pizza" @add-to-cart="addToCart" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="card">
-      <cart />
+      <div class="bg-white rounded-md p-10 m-6 shadow-xl">
+        <h5 class="card-title">My Card</h5>
+        <hr class="mt-2" />
+        <cart :cart="cart" @remove-from-cart="removeFromCart" />
+      </div>
     </div>
   </div>
 </template>
 <script>
+import navbar from './components/navbar.vue'
+import pizza from './components/pizza.vue'
+import cart from './components/cart.vue'
+import pizzas from './store/pizzas.json'
+
 export default {
   components: {
     navbar,
     pizza,
     cart,
+  },
+  data() {
+    return {
+      pizzas,
+      cart: [],
+    }
+  },
+  methods: {
+    addToCart(pizza) {
+      const itemInCart = this.cart.find((item) => item.id === pizza.id)
+      if (itemInCart) {
+        itemInCart.quantity++
+      } else {
+        this.cart.push({ ...pizza, quantity: 1 })
+      }
+    },
+    removeFromCart(index) {
+      if (this.cart[index].quantity > 1) {
+        this.cart[index].quantity--
+      } else {
+        this.cart.splice(index, 1)
+      }
+    },
   },
 }
 </script>

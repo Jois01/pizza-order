@@ -1,26 +1,12 @@
 <template>
-  <div class="card bg-white m-6 p-2 rounded-md shadow-xl">
-    <div class="card-title m-4 text-xl">Pizza list</div>
-    <div class="card-body m-4 items-center">
-      <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-8 items-center">
-        <div
-          class="card bg-gray-50 rounded-lg"
-          v-for="pizza in pizzas"
-          :key="pizza.id"
-          @click="open = true"
-        >
-          <img :src="pizza.image" alt="Pizza Image" class="rounded-t-lg" />
-          <div class="content mt-3 m-2">
-            <h2 class="pizza_name text-lg">{{ pizza.name }}</h2>
-            <p class="pizza_description text-sm">Rp. {{ pizza.harga }}</p>
-            <div class="bg-gray-200 w-40 py-1 px-2 mt-2 rounded-md flex gap-2">
-              <img src="./icons/pizza-svgrepo-com.svg" alt="" class="size-6" />
-              {{ pizza.description }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <img :src="pizza.image" alt="Pizza Image" class="rounded-t-lg" />
+  <div class="content mt-3 m-2">
+    <h2 class="pizza_name text-lg">{{ pizza.name }}</h2>
+    <p class="pizza_description text-sm">Rp. {{ pizza.harga }}</p>
+    <button class="bg-gray-200 w-40 py-1 px-2 mt-2 rounded-md flex gap-2" @click="open = true">
+      <img src="./icons/pizza-svgrepo-com.svg" alt="" class="size-6" />
+      bisa custom
+    </button>
   </div>
   <!-- modal -->
   <div
@@ -70,7 +56,7 @@
         <p></p>
         <button
           class="bg-blue-500 text-white w-32 py-2 px-2 rounded-md flex gap-2transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
-          @click.prevent="addToCart, (open = false)"
+          @click="addToCart"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -97,51 +83,24 @@
 <!-- kirim data ke cart -->
 
 <script>
-import pizzas from '../store/pizzas.json'
+import toppings from '../store/toppings.json'
+
 export default {
   data() {
     return {
-      pizzas,
-
-      cart: [],
-      total: 0,
-      toppings: [
-        {
-          id: 1,
-          name: 'Topping 1',
-        },
-        {
-          id: 2,
-          name: 'Topping 2',
-        },
-        {
-          id: 3,
-          name: 'Topping 3',
-        },
-        {
-          id: 4,
-          name: 'Topping 4',
-        },
-        {
-          id: 5,
-          name: 'Topping 5',
-        },
-      ],
+      toppings,
       open: false,
       selectedToppings: false,
     }
   },
+  props: ['pizza'],
   methods: {
-    toppingToggle(topping) {
-      this.isChecked = !this.isChecked
-    },
     addToCart() {
-      this.cart.push(this.pizzas[0])
-      this.total += this.pizzas[0].harga
-      if (this.cart == this.pizzas.id) {
-        this.pizzas.push({
-          pizza: this.cart,
-        })
+      this.$emit('add-to-cart', this.pizza)
+    },
+    addTopping() {
+      if(topping == isChecked){
+        this.$emit('add-to-cart', this.topping)
       }
     },
   },

@@ -9,77 +9,77 @@
   {
     "id": 2,
     "name": "Pizza 2",
-    "harga": "Rp 50.000",
+    "harga": 50000,
     "image": "pizza1.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 3,
     "name": "Pizza 3",
-    "harga": "Rp 25.000",
+    "harga": 25000,
     "image": "pizza2.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 4,
     "name": "Pizza 4",
-    "harga": "Rp 100.000",
+    "harga": 60000,
     "image": "pizza.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 5,
     "name": "Pizza 5",
-    "harga": "Rp 50.000",
+    "harga": 70000,
     "image": "pizza1.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 6,
     "name": "Pizza 6",
-    "harga": "Rp 25.000",
+    "harga": 80000,
     "image": "pizza2.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 7,
     "name": "Pizza 7",
-    "harga": "Rp 100.000",
+    "harga": 40000,
     "image": "pizza.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 8,
     "name": "Pizza 8",
-    "harga": "Rp 50.000",
+    "harga": 20000,
     "image": "pizza1.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 9,
     "name": "Pizza 9",
-    "harga": "Rp 25.000",
+    "harga": 45000,
     "image": "pizza2.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 10,
     "name": "Pizza 10",
-    "harga": "Rp 100.000",
+    "harga": 55000,
     "image": "pizza.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 11,
     "name": "Pizza 11",
-    "harga": "Rp 50.000",
+    "harga": 199000,
     "image": "pizza1.jpeg",
     "description": "bisa di custom"
   },
   {
     "id": 12,
     "name": "Pizza 12",
-    "harga": "Rp 25.000",
+    "harga": 75000,
     "image": "pizza2.jpeg",
     "description": "bisa di custom"
   }
