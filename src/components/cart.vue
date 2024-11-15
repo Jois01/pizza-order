@@ -8,60 +8,63 @@
         </div>
         <div class="topping mt-6">
           <div class="text-sm">TOPPING</div>
-          <div class="flex justify-between">
-            <div class="text-sm">{{ item.harga | currency }}</div>
-            <div class="relative flex items-center">
-              <button
-                type="button"
-                id="decrement-button"
-                data-input-counter-decrement="quantity-input"
-                class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-              >
-                <svg
-                  class="size-2 text-gray-900 dark:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 18 2"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 1h16"
-                  />
-                </svg>
-              </button>
-              <div class="text-center m-2">
-                {{ item.quantity }}
-              </div>
-              <button
-                type="button"
-                id="increment-button"
-                data-input-counter-increment="quantity-input"
-                class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-              >
-                <svg
-                  class="size-2 text-gray-900 dark:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 18 18"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 1v16M1 9h16"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
+          <div class="text-sm">TOPPING</div>
         </div>
+        <div class="flex justify-between">
+          <div class="flex items-center">
+            <button
+              type="button"
+              id="decrement-button"
+              data-input-counter-decrement="quantity-input"
+              class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+              @click="buttonKurang(index)"
 
+            >
+              <svg
+                class="size-2 text-gray-900 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 2"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 1h16"
+                />
+              </svg>
+            </button>
+            <div class="text-center m-2">
+              {{ item.quantity }}
+            </div>
+            <button
+              type="button"
+              id="increment-button"
+              data-input-counter-increment="quantity-input"
+              class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+              @click="buttonTambah(index)"
+            >
+              <svg
+                class="size-2 text-gray-900 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 1v16M1 9h16"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="harga text-xl m-2">{{ total }}</div>
+        </div>
         <div class="trash">
           <button @click="removeFromCart(index)">
             <svg
@@ -81,7 +84,7 @@
           </button>
         </div>
       </div>
-      <div class="harga text-right">{{ total | currency }}</div>
+
       <hr class="my-8" />
     </div>
     <div v-else>
@@ -101,6 +104,12 @@ export default {
   methods: {
     removeFromCart(index) {
       this.$emit('remove-from-cart', index)
+    },
+    buttonTambah(index) {
+      this.$emit('button-Tambah', index)
+    },
+    buttonKurang(index) {
+      this.$emit('button-kurang', index)
     },
   },
 }

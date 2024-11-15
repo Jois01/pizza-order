@@ -6,11 +6,7 @@
         <div class="card-title m-4 text-xl">Pizza list</div>
         <div class="card-body m-4 items-center">
           <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-8 items-center">
-            <div
-              class="card bg-gray-50 rounded-lg"
-              v-for="pizza in pizzas"
-              :key="pizza.id"
-            >
+            <div class="card bg-gray-50 rounded-lg" v-for="pizza in pizzas" :key="pizza.id">
               <pizza :pizza="pizza" @add-to-cart="addToCart" />
             </div>
           </div>
@@ -21,7 +17,12 @@
       <div class="bg-white rounded-md p-10 m-6 shadow-xl">
         <h5 class="card-title">My Card</h5>
         <hr class="mt-2" />
-        <cart :cart="cart" @remove-from-cart="removeFromCart" />
+        <cart
+          :cart="cart"
+          @remove-from-cart="removeFromCart"
+          @button-tambah="buttonTambah"
+          @button-kurang="buttonKurang"
+        />
       </div>
     </div>
   </div>
@@ -54,6 +55,12 @@ export default {
       }
     },
     removeFromCart(index) {
+      this.cart.splice(index, 1)
+    },
+    buttonTambah(index) {
+      this.cart[index].quantity++
+    },
+    buttonKurang(index) {
       if (this.cart[index].quantity > 1) {
         this.cart[index].quantity--
       } else {
