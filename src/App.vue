@@ -48,10 +48,14 @@ export default {
   methods: {
     addToCart(pizza) {
       const itemInCart = this.cart.find((item) => item.id === pizza.id)
+
       if (itemInCart) {
         itemInCart.quantity++
       } else {
-        this.cart.push({ ...pizza, quantity: 1 })
+        this.cart.push({
+          ...pizza,
+          quantity: 1,
+        })
       }
     },
     removeFromCart(index) {
@@ -66,6 +70,11 @@ export default {
       } else {
         this.cart.splice(index, 1)
       }
+    },
+    addTopping(topping) {
+      const newItem = JSON.parse(JSON.stringify(pizza))
+      newItem.quantity = 1
+      this.cart.push(newItem)
     },
   },
 }

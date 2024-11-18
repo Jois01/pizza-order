@@ -8,7 +8,12 @@
         </div>
         <div class="topping mt-6">
           <div class="text-sm">TOPPING</div>
-          <div class="text-sm">TOPPING</div>
+          <div class="topping-cart">
+            <div class="topping-item" v-for="(topping, index) in item.toppings">
+              <div class="topping-name">{{ topping.name }}</div>
+              <!-- <div class="quantity">{{ topping.quantity }}</div> -->
+            </div>
+          </div>
         </div>
         <div class="flex justify-between">
           <div class="flex items-center">
@@ -18,7 +23,6 @@
               data-input-counter-decrement="quantity-input"
               class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
               @click="buttonKurang(index)"
-
             >
               <svg
                 class="size-2 text-gray-900 dark:text-white"
@@ -88,7 +92,7 @@
       <hr class="my-8" />
     </div>
     <div v-else>
-      <p>Keranjang kosong</p>
+      <div class="text-center text-xl text-gray-300 m-10">Keranjang kosong</div>
     </div>
   </div>
 </template>
@@ -98,7 +102,7 @@ export default {
   props: ['cart'],
   computed: {
     total() {
-      return this.cart.reduce((acc, item) => acc + item.harga * item.quantity, 0)
+      return this.cart.reduce((acc, item) => acc + item.quantity * item.harga, 0)
     },
   },
   methods: {

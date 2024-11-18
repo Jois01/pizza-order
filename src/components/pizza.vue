@@ -1,12 +1,14 @@
 <template>
-  <img :src="pizza.image" alt="Pizza Image" class="rounded-t-lg" />
-  <div class="content mt-3 m-2">
-    <h2 class="pizza_name text-lg">{{ pizza.name }}</h2>
-    <p class="pizza_description text-sm">Rp. {{ pizza.harga }}</p>
-    <button class="bg-gray-200 w-40 py-1 px-2 mt-2 rounded-md flex gap-2" @click="open = true">
-      <img src="./icons/pizza-svgrepo-com.svg" alt="" class="size-6" />
-      bisa custom
-    </button>
+  <div @click="open = true">
+    <img :src="pizza.image" alt="Pizza Image" class="rounded-t-lg" />
+    <div class="content mt-3 m-2">
+      <h2 class="pizza_name text-lg">{{ pizza.name }}</h2>
+      <p class="pizza_description text-sm">Rp. {{ pizza.harga }}</p>
+      <div class="bg-gray-200 w-40 py-1 px-2 mt-2 rounded-md flex gap-2">
+        <img src="./icons/pizza-svgrepo-com.svg" alt="" class="size-6" />
+        bisa custom
+      </div>
+    </div>
   </div>
   <!-- modal -->
   <div
@@ -96,12 +98,13 @@ export default {
   props: ['pizza'],
   methods: {
     addToCart() {
-      this.$emit('add-to-cart', this.pizza)
-    },
-    addTopping() {
-      if(topping == isChecked){
-        this.$emit('add-to-cart', this.topping)
+      const selectedToppings = this.toppings.filter((topping) => topping.isChecked)
+      const pizzaWithToppings = {
+        ...this.pizza,
+        toppings: selectedToppings,
       }
+      this.$emit('add-to-cart', pizzaWithToppings)
+      this.open = false 
     },
   },
 }
