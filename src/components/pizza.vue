@@ -16,13 +16,13 @@
     class="modal bg-white border border-gray-400 rounded-md items-center justify-center inset-0 fixed m-20 md:m-40 shadow-2xl"
   >
     <div class="judul m-3 flex justify-between mt-10">
-      <div class="text-2xl">Select variant</div>
+      <div class="text-md sm:text-2xl">Select variant</div>
       <button @click="open = false" class="bg-gray-200 w-32 py-1 px-2 rounded-md">Close</button>
     </div>
     <hr />
     <div class="content">
       <form action="#">
-        <div class="grid grid-cols-2 m-6 gap-8 md:grid-cols-4">
+        <div class="grid grid-cols m-6 gap-8 md:grid-cols-4 sm:grid-cols-2">
           <div class="topping" v-for="topping in toppings" :key="topping.id">
             <input type="checkbox" :id="topping.id" class="hidden" v-model="topping.isChecked" />
             <label :for="topping.id" class="inline-flex items-center justify-between">
@@ -104,7 +104,7 @@ export default {
         toppings: selectedToppings,
       }
       this.$emit('add-to-cart', pizzaWithToppings)
-      this.open = false 
+      this.open = false
     },
   },
 }
