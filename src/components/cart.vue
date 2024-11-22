@@ -59,6 +59,21 @@
             </svg>
           </button>
         </div>
+        <div class="hidden md:block">
+          <div class="flex justify-between">
+            <div class="flex items-center">
+              <button
+              type="button"
+              id="decrement-button"
+              data-input-counter-decrement="quantity-input"
+              class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg
+              p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+              @click="buttonKurang(index)"
+              >
+            </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <hr class="my-8" />

@@ -13,8 +13,9 @@
   <!-- modal -->
   <div
     v-if="open"
-    class="modal bg-white border border-gray-400 rounded-md items-center justify-center inset-0 fixed m-20 md:m-40 shadow-2xl"
+    class="modal bg-white border border-gray-400 rounded-md items-center justify-center inset-0 fixed  md:m-40 shadow-2xl "
   >
+  <div class="">
     <div class="judul m-3 flex justify-between mt-10">
       <div class="text-md sm:text-2xl">Select variant</div>
       <button @click="open = false" class="bg-gray-200 w-32 py-1 px-2 rounded-md">Close</button>
@@ -78,6 +79,7 @@
         </button>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <!-- varian yang bisa di pilih cuman 5 -->
