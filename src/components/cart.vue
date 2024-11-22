@@ -24,7 +24,7 @@
               class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
               @click="buttonKurang(index)"
             >
-            <img src="./icons/kurang.svg" class="size-2 text-gray-900 dark:text-white" alt="" />
+              <img src="./icons/kurang.svg" class="size-2 text-gray-900 dark:text-white" alt="" />
             </button>
             <div class="text-center m-2">
               {{ item.quantity }}
@@ -39,7 +39,7 @@
               <img src="./icons/tambah.svg" class="size-2 text-gray-900 dark:text-white" alt="" />
             </button>
           </div>
-          <div class="harga text-xl m-2">{{ item.harga }}</div>
+          <div class="harga text-xl m-2">Rp {{ item.harga }}</div>
         </div>
         <div class="trash">
           <button @click="removeFromCart(index)">
@@ -59,29 +59,13 @@
             </svg>
           </button>
         </div>
-        <div class="hidden md:block">
-          <div class="flex justify-between">
-            <div class="flex items-center">
-              <button
-              type="button"
-              id="decrement-button"
-              data-input-counter-decrement="quantity-input"
-              class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg
-              p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-              @click="buttonKurang(index)"
-              >
-            </button>
-            </div>
-          </div>
-        </div>
+        <hr class="my-8" />
       </div>
 
-      <hr class="my-8" />
-      <div class="total flex justify-between">
+      <div class="total flex justify-between m-4 font-bold">
         <div class="text-lg">Total</div>
-        <div class="harga text-xl m-2">{{ total }}</div>
+        <div class="harga text-xl m-2">Rp {{ total }}</div>
       </div>
-
     </div>
     <div v-else>
       <div class="text-center text-xl text-gray-300 m-10">Keranjang kosong</div>
