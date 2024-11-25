@@ -4,7 +4,7 @@
   </nav>
 
   <section class="flex flex-col justify-center items-center">
-    <div id="app" class="grid grid-cols-1 md:grid-cols-3 m-4">
+    <div id="app" class="grid grid-cols-1 lg:grid-cols-3 m-4">
       <div class="card col-span-2">
         <div class="card bg-white m-6 p-2 rounded-md shadow-xl">
           <div class="card-title m-4 text-xl">Pizza list</div>
