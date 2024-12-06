@@ -99,15 +99,19 @@ export default {
   },
   props: ['pizza'],
   methods: {
-    addToCart() {
-      const selectedToppings = this.toppings.filter((topping) => topping.isChecked)
-      const pizzaWithToppings = {
-        ...this.pizza,
-        toppings: selectedToppings,
-      }
-      this.$emit('add-to-cart', pizzaWithToppings)
-      this.open = false
-    },
+  addToCart() {
+    const selectedToppings = this.toppings
+      .filter((topping) => topping.isChecked)
+      .map((topping) => ({ ...topping, quantity: 1 })); // Tambahkan quantity untuk setiap topping
+
+    const pizzaWithToppings = {
+      ...this.pizza,
+      toppings: selectedToppings,
+    };
+    this.$emit("add-to-cart", pizzaWithToppings);
+    this.open = false;
   },
+}
+
 }
 </script>

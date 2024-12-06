@@ -1,22 +1,7 @@
 [
-  {
-    "id": 1,
-    "name": "Topping 1"
-  },
-  {
-    "id": 2,
-    "name": "Topping 2"
-  },
-  {
-    "id": 3,
-    "name": "Topping 3"
-  },
-  {
-    "id": 4,
-    "name": "Topping 4"
-  },
-  {
-    "id": 5,
-    "name": "Topping 5"
-  }
+  { "id": 1, "name": "Cheese", "price": 5000, "isChecked": false, "quantity": 1 },
+  { "id": 2, "name": "Pepperoni", "price": 7000, "isChecked": false, "quantity": 1 },
+  { "id": 3, "name": "Mushroom", "price": 4000, "isChecked": false, "quantity": 1 },
+  { "id": 4, "name": "Sosis", "price": 2000, "isChecked": false, "quantity": 1 },
+  { "id": 5, "name": "Paprika ", "price": 3000, "isChecked": false, "quantity": 1 }
 ]

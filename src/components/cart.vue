@@ -9,12 +9,44 @@
         <div class="topping mt-6">
           <div class="text-sm">TOPPING</div>
           <div class="topping-cart">
-            <div class="topping-item" v-for="(topping, index) in item.toppings">
+            <div
+              class="topping-item flex justify-between items-center"
+              v-for="(topping, tIndex) in item.toppings"
+              :key="tIndex"
+            >
               <div class="topping-name">{{ topping.name }}</div>
-              <!-- <div class="quantity">{{ topping.quantity }}</div> -->
+              <div class="flex items-center">
+                <button
+                  type="button"
+                  class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                  @click="buttonKurangTopping(index, tIndex)"
+                >
+                  <img
+                    src="./icons/kurang.svg"
+                    class="size-2 text-gray-900 dark:text-white"
+                    alt=""
+                  />
+                </button>
+                <div class="text-center m-2">{{ topping.quantity }}</div>
+                <button
+                  type="button"
+                  class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-1 focus:ring-gray-100 focus:ring-2 focus:outline-none"
+                  @click="buttonTambahTopping(index, tIndex)"
+                >
+                  <img
+                    src="./icons/tambah.svg"
+                    class="size-2 text-gray-900 dark:text-white"
+                    alt=""
+                  />
+                </button>
+              </div>
+              <div class="topping-harga">
+                {{ topping.price * topping.quantity }}
+              </div>
             </div>
           </div>
         </div>
+
         <div class="flex justify-between">
           <div class="flex items-center">
             <button
@@ -77,8 +109,14 @@
 export default {
   props: ['cart'],
   computed: {
-    total(index) {
-      return this.cart.reduce((acc, item) => acc + item.quantity * item.harga, 0)
+    total() {
+      return this.cart.reduce((acc, item) => {
+        const toppingTotal = item.toppings.reduce(
+          (tAcc, topping) => tAcc + topping.price * topping.quantity,
+          0,
+        )
+        return acc + item.quantity * item.harga + toppingTotal
+      }, 0)
     },
   },
   methods: {
@@ -90,6 +128,17 @@ export default {
     },
     buttonKurang(index) {
       this.$emit('button-kurang', index)
+    },
+    buttonTambahTopping(cartIndex, toppingIndex) {
+      this.cart[cartIndex].toppings[toppingIndex].quantity++
+    },
+    buttonKurangTopping(cartIndex, toppingIndex) {
+      const topping = this.cart[cartIndex].toppings[toppingIndex]
+      if (topping.quantity > 1) {
+        topping.quantity--
+      } else {
+        this.cart[cartIndex].toppings.splice(toppingIndex, 1)
+      }
     },
   },
 }
