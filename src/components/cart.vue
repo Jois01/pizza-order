@@ -201,10 +201,20 @@ export default {
         .filter((topping) => topping.isChecked)
         .map((topping) => ({ ...topping, quantity: 1 }))
 
-      this.cart[this.selectedItemIndex].toppings.push(...selectedToppings)
+      const existingToppings = this.cart[this.selectedItemIndex].toppings
+
+      selectedToppings.forEach((newTopping) => {
+        const existingTopping = existingToppings.find((topping) => topping.id === newTopping.id)
+        if (existingTopping) {
+          existingTopping.quantity += newTopping.quantity
+        } else {
+          existingToppings.push(newTopping)
+        }
+      })
 
       this.open = false
     },
+
     removeFromCart(index) {
       this.$emit('remove-from-cart', index)
     },
