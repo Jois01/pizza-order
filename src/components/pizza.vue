@@ -27,10 +27,7 @@
             <div class="topping" v-for="topping in toppings" :key="topping.id">
               <input type="checkbox" :id="topping.id" class="hidden" v-model="topping.isChecked" />
               <label :for="topping.id" class="inline-flex items-center justify-between">
-                <div
-                  class="bg-white border-2 border-gray-200 rounded-lg cursor-pointer"
-                  :class="{ 'border-blue-500 ': topping.isChecked }"
-                >
+                <div class="bg-white border-2 border-gray-200 rounded-lg cursor-pointer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

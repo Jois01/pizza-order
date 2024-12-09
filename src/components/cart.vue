@@ -49,9 +49,7 @@
                   />
                 </button>
               </div>
-              <div class="topping-harga">
-                Rp. {{ topping.price * topping.quantity }}
-              </div>
+              <div class="topping-harga">Rp. {{ topping.price * topping.quantity }}</div>
             </div>
           </div>
         </div>
@@ -114,55 +112,55 @@
   </div>
   <!-- modal -->
   <div
-  v-if="open"
-  class="modal bg-white border border-gray-400 rounded-md items-center justify-center inset-0 fixed md:m-40 shadow-2xl"
->
-  <div>
-    <div class="judul m-3 flex justify-between mt-10">
-      <div class="text-md sm:text-2xl">Select Toppings</div>
-      <button @click="open = false" class="bg-gray-200 w-32 py-1 px-2 rounded-md">Close</button>
-    </div>
-    <hr />
-    <form action="#">
-      <div class="grid grid-cols m-6 gap-8 md:grid-cols-4 sm:grid-cols-2">
-        <div class="topping" v-for="topping in toppings" :key="topping.id">
-          <input type="checkbox" :id="topping.id" class="hidden" v-model="topping.isChecked" />
-          <label :for="topping.id" class="inline-flex items-center justify-between">
-            <div class="bg-white border-2 border-gray-200 rounded-lg cursor-pointer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6 stroke-white fill-yellow-500"
-                :class="{ 'rotate-45 fill-blue-500': topping.isChecked }"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                />
-              </svg>
-            </div>
-            <div class="ml-2">
-              {{ topping.name }}
-            </div>
-          </label>
-        </div>
+    v-if="open"
+    class="modal bg-white border border-gray-400 rounded-md items-center justify-center inset-0 fixed md:m-40 shadow-2xl"
+  >
+    <div>
+      <div class="judul m-3 flex justify-between mt-10">
+        <div class="text-md sm:text-2xl">Select Toppings</div>
+        <button @click="open = false" class="bg-gray-200 w-32 py-1 px-2 rounded-md">Close</button>
       </div>
-    </form>
-    <hr class="mt-6" />
-    <div class="footer m-3 mt-6 flex justify-between">
-      <button
-        class="bg-blue-500 text-white w-32 py-2 px-2 rounded-md flex gap-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 items-center text-center justify-center"
-        @click="addToppingToCart"
-      >
-        Add
-      </button>
+      <hr />
+      <form action="#">
+        <div class="grid grid-cols m-6 gap-8 md:grid-cols-4 sm:grid-cols-2">
+          <div class="topping" v-for="topping in toppings" :key="topping.id">
+            <input type="checkbox" :id="topping.id" class="hidden" v-model="topping.isChecked" />
+            <label :for="topping.id" class="inline-flex items-center justify-between">
+              <div class="bg-white border-2 border-gray-200 rounded-lg cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6 stroke-white fill-yellow-500"
+                  :class="{ 'rotate-45 fill-blue-500': topping.isChecked }"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </div>
+              <div class="ml-2">
+                {{ topping.name }}
+              </div>
+            </label>
+          </div>
+        </div>
+      </form>
+      <hr class="mt-6" />
+      <div class="footer m-3 mt-6 flex justify-between">
+        <button
+          class="bg-blue-500 text-white w-32 py-2 px-2 rounded-md flex gap-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 items-center text-center justify-center"
+          @click="addToppingToCart"
+        >
+          Add
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -171,9 +169,9 @@ import toppings from '../store/toppings.json'
 export default {
   data() {
     return {
-      toppings, 
-      open: false, 
-      selectedItemIndex: null, 
+      toppings,
+      open: false,
+      selectedItemIndex: null,
     }
   },
   props: ['cart'],

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-between bg-white shadow-xl p-6">
+  <nav class="flex justify-between bg-white shadow-xl p-4">
     <navbar />
   </nav>
 
