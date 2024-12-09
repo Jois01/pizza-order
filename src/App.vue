@@ -55,15 +55,18 @@ export default {
   methods: {
     addToCart(pizza) {
       const itemInCart = this.cart.find((item) => item.id === pizza.id)
-
-      if (itemInCart) {
-        itemInCart.quantity++
-      } else {
-        this.cart.push({
+      this.cart.push({
           ...pizza,
           quantity: 1,
-        })
-      }
+      })
+      // if (itemInCart) {
+      //   itemInCart.quantity++
+      // } else {
+      //   this.cart.push({
+      //     ...pizza,
+      //     quantity: 1,
+      //   })
+      // }
     },
     removeFromCart(index) {
       this.cart.splice(index, 1)
