@@ -80,7 +80,7 @@
           </div>
           <div class="harga text-xl m-2">Rp {{ item.harga }}</div>
         </div>
-        <div class="trash">
+        <div class="flex items-center justify-between">
           <button @click="removeFromCart(index)">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -97,13 +97,14 @@
               />
             </svg>
           </button>
+          <div class="total text-xl font-bold">Rp. {{ totalSatuan(item) }}</div>
         </div>
         <hr class="my-8" />
       </div>
 
-      <div class="total flex justify-between m-4 font-bold">
-        <div class="text-lg">Total</div>
-        <div class="harga text-xl m-2">Rp {{ total }}</div>
+      <div class="total flex justify-between m-4 font-bold items-center">
+        <div class="text-xl">Total</div>
+        <div class="harga text-2xl m-2">Rp {{ total }}</div>
       </div>
     </div>
     <div v-else>
@@ -185,7 +186,7 @@ export default {
         return acc + item.quantity * item.harga + toppingTotal
       }, 0)
     },
-  },
+},
   methods: {
     openModal(index) {
       this.selectedItemIndex = index
@@ -235,6 +236,16 @@ export default {
         this.cart[cartIndex].toppings.splice(toppingIndex, 1)
       }
     },
+    totalSatuan(item){
+      
+      const toppingTotal = item.toppings.reduce(
+      (tAcc, topping) => tAcc + topping.price * topping.quantity,
+      0
+    );
+    
+    return item.quantity * item.harga + toppingTotal;
+    
+},
   },
 }
 </script>
